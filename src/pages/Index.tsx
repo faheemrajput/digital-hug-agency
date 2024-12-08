@@ -12,7 +12,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-gradient-x">
+              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent animate-gradient-x">
                 Transform Your Digital Presence
               </span>
             </h1>
@@ -33,7 +33,7 @@ const Index = () => {
       <Services />
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-primary/5">
+      <section id="contact" className="py-20 bg-secondary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start?</h2>
           <p className="text-xl text-foreground/70 mb-8">

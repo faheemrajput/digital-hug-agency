@@ -11,11 +11,11 @@ export const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed w-full bg-background/80 backdrop-blur-sm z-50">
+    <nav className="fixed w-full bg-background/80 backdrop-blur-sm z-50 border-b border-primary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <a href="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <a href="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
               DigitalPro
             </a>
           </div>

@@ -34,7 +34,7 @@ export const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="p-6 rounded-lg bg-background border border-primary/20 hover:border-primary/40 transition-all"
+              className="p-6 rounded-lg bg-secondary border border-primary/20 hover:border-primary/40 transition-all"
             >
               <div className="text-primary mb-4">{service.icon}</div>
               <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
