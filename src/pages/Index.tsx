@@ -1,7 +1,10 @@
 import { Navigation } from "@/components/Navigation";
 import { Services } from "@/components/Services";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Mail, MapPin, Phone } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 
 const Index = () => {
   return (
@@ -32,6 +35,41 @@ const Index = () => {
       </section>
 
       <Services />
+
+      {/* About Us Section */}
+      <section className="py-20 bg-secondary/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">About DigitalPro</h2>
+              <div className="space-y-4">
+                <p className="text-foreground/70">
+                  Founded in 2020, DigitalPro has been at the forefront of digital marketing innovation, 
+                  helping businesses transform their online presence and achieve remarkable growth.
+                </p>
+                <p className="text-foreground/70">
+                  Our team of experts combines creativity with data-driven strategies to deliver 
+                  exceptional results for our clients across various industries.
+                </p>
+                <div className="grid grid-cols-2 gap-4 mt-8">
+                  <div className="bg-secondary p-4 rounded-lg">
+                    <h4 className="text-xl font-bold text-primary mb-2">10+</h4>
+                    <p className="text-sm text-foreground/70">Years Experience</p>
+                  </div>
+                  <div className="bg-secondary p-4 rounded-lg">
+                    <h4 className="text-xl font-bold text-primary mb-2">200+</h4>
+                    <p className="text-sm text-foreground/70">Projects Completed</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square bg-primary/10 rounded-lg"></div>
+              <div className="absolute -bottom-6 -right-6 w-2/3 aspect-square bg-primary/20 rounded-lg"></div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Stats Section */}
       <section className="py-20 bg-secondary">
@@ -139,18 +177,83 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-secondary/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start?</h2>
-          <p className="text-xl text-foreground/70 mb-8">
-            Let's discuss how we can help grow your business
-          </p>
-          <a
-            href="mailto:contact@digitalpro.com"
-            className="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors"
-          >
-            Contact Us
-          </a>
+      <section id="contact" className="py-20 bg-secondary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
+            <p className="text-foreground/70 max-w-2xl mx-auto">
+              Ready to transform your digital presence? Contact us today and let's discuss how we can help your business grow.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <Card className="bg-background border border-primary/20">
+              <CardContent className="pt-6">
+                <div className="flex items-center mb-4">
+                  <Phone className="w-5 h-5 text-primary mr-2" />
+                  <h3 className="font-semibold">Phone</h3>
+                </div>
+                <p className="text-foreground/70">+1 (555) 123-4567</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-background border border-primary/20">
+              <CardContent className="pt-6">
+                <div className="flex items-center mb-4">
+                  <Mail className="w-5 h-5 text-primary mr-2" />
+                  <h3 className="font-semibold">Email</h3>
+                </div>
+                <p className="text-foreground/70">contact@digitalpro.com</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-background border border-primary/20">
+              <CardContent className="pt-6">
+                <div className="flex items-center mb-4">
+                  <MapPin className="w-5 h-5 text-primary mr-2" />
+                  <h3 className="font-semibold">Address</h3>
+                </div>
+                <p className="text-foreground/70">123 Digital Street, Tech City, TC 12345</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="max-w-2xl mx-auto">
+            <Card className="bg-background border border-primary/20">
+              <CardContent className="pt-6">
+                <form className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Name</Label>
+                      <Input id="name" placeholder="Your name" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email</Label>
+                      <Input id="email" type="email" placeholder="Your email" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="subject">Subject</Label>
+                    <Input id="subject" placeholder="How can we help?" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message</Label>
+                    <textarea
+                      id="message"
+                      className="min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      placeholder="Your message"
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
