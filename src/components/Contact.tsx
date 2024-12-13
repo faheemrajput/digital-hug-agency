@@ -32,7 +32,7 @@ export const Contact = () => {
                 <Phone className="w-5 h-5 text-primary mr-2" />
                 <h3 className="font-semibold">Phone</h3>
               </div>
-              <p className="text-foreground/70">+1 (555) 123-4567</p>
+              <p className="text-foreground/70">+1 (415) 555-0123</p>
             </CardContent>
           </Card>
           
@@ -42,7 +42,7 @@ export const Contact = () => {
                 <Mail className="w-5 h-5 text-primary mr-2" />
                 <h3 className="font-semibold">Email</h3>
               </div>
-              <p className="text-foreground/70">contact@digitalpro.com</p>
+              <p className="text-foreground/70">contact@wirelab.co</p>
             </CardContent>
           </Card>
           
@@ -52,7 +52,7 @@ export const Contact = () => {
                 <MapPin className="w-5 h-5 text-primary mr-2" />
                 <h3 className="font-semibold">Address</h3>
               </div>
-              <p className="text-foreground/70">123 Digital Street, Tech City, TC 12345</p>
+              <p className="text-foreground/70">100 Technology Drive, Suite 300<br />San Francisco, CA 94105</p>
             </CardContent>
           </Card>
         </div>
