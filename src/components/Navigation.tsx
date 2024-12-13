@@ -16,7 +16,7 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <a href="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-              DigitalPro
+              WireLab Solution
             </a>
           </div>
           

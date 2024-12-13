@@ -19,7 +19,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-foreground/70">
-              © 2024 DigitalPro. All rights reserved.
+              © 2024 WireLab Solution. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="text-foreground/70 hover:text-primary">
