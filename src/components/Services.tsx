@@ -1,26 +1,26 @@
-import { Rocket, Target, Globe, TrendingUp } from "lucide-react";
+import { Code, Database, Globe, Rocket } from "lucide-react";
 
 export const Services = () => {
   const services = [
     {
-      icon: <Rocket className="w-8 h-8" />,
-      title: "Digital Strategy",
-      description: "Custom digital strategies to grow your online presence",
+      icon: <Code className="w-8 h-8" />,
+      title: "Python Development",
+      description: "Custom Python solutions and APIs for your business needs",
     },
     {
-      icon: <Target className="w-8 h-8" />,
-      title: "SEO Optimization",
-      description: "Improve your search rankings and drive organic traffic",
+      icon: <Database className="w-8 h-8" />,
+      title: "OCR Solutions",
+      description: "Advanced document scanning and text extraction services",
     },
     {
       icon: <Globe className="w-8 h-8" />,
-      title: "Social Media",
-      description: "Engage your audience across all social platforms",
+      title: "Local SEO",
+      description: "Boost your local search rankings and visibility",
     },
     {
-      icon: <TrendingUp className="w-8 h-8" />,
-      title: "Analytics",
-      description: "Data-driven insights to optimize your campaigns",
+      icon: <Rocket className="w-8 h-8" />,
+      title: "Web Development",
+      description: "Modern and responsive website development solutions",
     },
   ];
 
