@@ -7,10 +7,19 @@ import { Contact } from "@/components/Contact";
 import { FAQ } from "@/components/FAQ";
 import { Portfolio } from "@/components/Portfolio";
 import { Pricing } from "@/components/Pricing";
+import { Shield } from "lucide-react";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <div className="bg-primary py-2 px-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 text-white">
+          <Shield className="w-5 h-5" />
+          <p className="text-sm font-medium">
+            100% Money Back Guarantee - Your Satisfaction is Our Priority
+          </p>
+        </div>
+      </div>
       <Navigation />
       <Hero />
       <Services />
