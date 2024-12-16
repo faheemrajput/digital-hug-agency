@@ -5,118 +5,118 @@ const Services = () => {
     {
       icon: <Code className="w-12 h-12 text-primary" />,
       title: "Python API Development",
-      description: "Custom API solutions built with Python, ensuring scalability and performance for your applications.",
+      description: "Leverage our expertise in building robust, scalable Python APIs that power modern applications. Our solutions ensure optimal performance, security, and seamless integration capabilities.",
       features: [
-        "RESTful API Development",
-        "FastAPI & Django Implementation",
-        "API Security & Authentication",
-        "Database Integration",
-        "Performance Optimization",
-        "API Documentation"
+        "RESTful API Development with industry best practices",
+        "FastAPI & Django Implementation for high-performance systems",
+        "Advanced API Security & Authentication protocols",
+        "Seamless Database Integration & Optimization",
+        "Performance Monitoring & Enhancement",
+        "Comprehensive API Documentation & Support"
       ]
     },
     {
       icon: <Database className="w-12 h-12 text-primary" />,
       title: "OCR Solutions",
-      description: "Advanced Optical Character Recognition systems to digitize and process documents efficiently.",
+      description: "Transform your document processing workflow with our state-of-the-art OCR solutions. We specialize in converting various document formats into actionable, searchable data with high accuracy.",
       features: [
-        "Document Text Extraction",
-        "Handwriting Recognition",
-        "Multi-language Support",
-        "PDF Processing",
-        "Data Validation",
-        "Automated Workflows"
+        "High-precision Document Text Extraction",
+        "Advanced Handwriting Recognition Systems",
+        "Comprehensive Multi-language Support",
+        "Intelligent PDF Processing & Analysis",
+        "Automated Data Validation & Verification",
+        "Custom Workflow Automation Solutions"
       ]
     },
     {
       icon: <Brain className="w-12 h-12 text-primary" />,
       title: "Machine Learning",
-      description: "Intelligent solutions powered by cutting-edge machine learning algorithms and data analysis.",
+      description: "Harness the power of artificial intelligence with our custom machine learning solutions. We develop intelligent systems that transform your data into valuable insights and automated decisions.",
       features: [
-        "Predictive Analytics",
-        "Natural Language Processing",
-        "Computer Vision",
-        "Pattern Recognition",
-        "Custom ML Models",
-        "Data Pipeline Development"
+        "Advanced Predictive Analytics Models",
+        "Sophisticated Natural Language Processing",
+        "State-of-the-art Computer Vision Systems",
+        "Complex Pattern Recognition Algorithms",
+        "Tailored ML Model Development",
+        "Efficient Data Pipeline Architecture"
       ]
     },
     {
       icon: <Search className="w-12 h-12 text-primary" />,
       title: "Local SEO",
-      description: "Boost your local presence with targeted SEO strategies designed for your specific market.",
+      description: "Dominate your local market with our targeted SEO strategies. We help businesses increase their visibility in local search results and attract more qualified local customers.",
       features: [
-        "Local Keyword Research",
-        "Google My Business Optimization",
-        "Local Citation Building",
-        "Review Management",
-        "Local Content Strategy",
-        "Competition Analysis"
+        "In-depth Local Keyword Research & Analysis",
+        "Complete Google My Business Optimization",
+        "Strategic Local Citation Building",
+        "Proactive Review Management System",
+        "Targeted Local Content Strategy",
+        "Comprehensive Competition Analysis"
       ]
     },
     {
       icon: <MessageSquare className="w-12 h-12 text-primary" />,
       title: "Social Media Posts",
-      description: "Engaging social media content creation and management to grow your online presence.",
+      description: "Elevate your brand's social media presence with our expert content creation and management services. We craft engaging content that resonates with your audience and drives meaningful engagement.",
       features: [
-        "Content Calendar Planning",
-        "Visual Content Creation",
-        "Engagement Strategy",
-        "Analytics & Reporting",
-        "Community Management",
-        "Platform-specific Content"
+        "Strategic Content Calendar Planning",
+        "Professional Visual Content Creation",
+        "Data-driven Engagement Strategies",
+        "Comprehensive Analytics & Reporting",
+        "Active Community Management",
+        "Platform-optimized Content Distribution"
       ]
     },
     {
       icon: <Globe className="w-12 h-12 text-primary" />,
       title: "Domain Finding",
-      description: "Strategic domain name research and acquisition services for your digital presence.",
+      description: "Secure the perfect online identity for your business with our domain acquisition expertise. We help you find and secure domain names that align with your brand and business objectives.",
       features: [
-        "Domain Name Research",
-        "Availability Check",
-        "Brand Protection",
-        "Domain Valuation",
-        "Transfer Assistance",
-        "DNS Management"
+        "Strategic Domain Name Research",
+        "Comprehensive Availability Analysis",
+        "Proactive Brand Protection Strategies",
+        "Expert Domain Valuation Services",
+        "Seamless Transfer Assistance",
+        "Professional DNS Management"
       ]
     },
     {
       icon: <Rocket className="w-12 h-12 text-primary" />,
       title: "Web Development",
-      description: "Full-stack web development solutions using modern technologies and best practices.",
+      description: "Create stunning, high-performance websites with our expert web development services. We build responsive, user-friendly websites that drive results and provide exceptional user experiences.",
       features: [
-        "Responsive Design",
-        "Frontend Development",
-        "Backend Integration",
-        "E-commerce Solutions",
-        "Performance Optimization",
-        "Security Implementation"
+        "Modern Responsive Design Implementation",
+        "Advanced Frontend Development",
+        "Seamless Backend Integration",
+        "Custom E-commerce Solutions",
+        "Comprehensive Performance Optimization",
+        "Enterprise-grade Security Measures"
       ]
     },
     {
       icon: <Mail className="w-12 h-12 text-primary" />,
       title: "Cold Email Marketing",
-      description: "Effective cold email campaigns designed to generate leads and drive conversions.",
+      description: "Maximize your outreach success with our strategic cold email marketing services. We create and execute targeted campaigns that generate quality leads and drive meaningful conversions.",
       features: [
-        "Email List Building",
-        "Campaign Strategy",
-        "A/B Testing",
-        "Deliverability Optimization",
-        "Response Tracking",
-        "Follow-up Automation"
+        "Strategic Email List Building",
+        "Data-driven Campaign Strategy",
+        "Advanced A/B Testing Methods",
+        "Maximum Deliverability Optimization",
+        "Detailed Response Tracking Analytics",
+        "Intelligent Follow-up Automation"
       ]
     },
     {
       icon: <Target className="w-12 h-12 text-primary" />,
       title: "SEO",
-      description: "Comprehensive SEO strategies to improve your search rankings and drive organic traffic.",
+      description: "Achieve top search engine rankings with our comprehensive SEO services. We implement proven strategies that improve your visibility and drive sustainable organic traffic growth.",
       features: [
-        "Technical SEO Audit",
-        "Keyword Research",
-        "On-page Optimization",
-        "Link Building",
-        "Content Strategy",
-        "Performance Monitoring"
+        "In-depth Technical SEO Auditing",
+        "Advanced Keyword Research & Analysis",
+        "Strategic On-page Optimization",
+        "Quality Link Building Campaigns",
+        "Results-driven Content Strategy",
+        "Continuous Performance Monitoring"
       ]
     },
   ];
@@ -125,9 +125,9 @@ const Services = () => {
     <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
-          <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-            Comprehensive digital solutions tailored to your business needs
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Professional Digital Services</h1>
+          <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
+            Transform your business with our comprehensive suite of digital solutions. We combine industry expertise with cutting-edge technology to deliver exceptional results that drive growth and innovation.
           </p>
         </div>
         
