@@ -1,4 +1,6 @@
 import { Code, Database, Globe, Rocket } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const Services = () => {
   const services = [
@@ -41,6 +43,14 @@ export const Services = () => {
               <p className="text-foreground/70">{service.description}</p>
             </div>
           ))}
+        </div>
+        
+        <div className="flex justify-center mt-12">
+          <Link to="/services">
+            <Button variant="default" size="lg">
+              See All Services
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
