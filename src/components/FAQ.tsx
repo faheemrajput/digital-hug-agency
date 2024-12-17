@@ -30,31 +30,46 @@ export const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-secondary/50">
+    <section id="faq" className="py-24 bg-gradient-to-b from-secondary/50 to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-          <p className="text-foreground/70">
-            Find answers to common questions about our services and processes
+        <div className="text-center mb-16">
+          <span className="text-primary font-semibold tracking-wider uppercase text-sm">
+            Got Questions?
+          </span>
+          <h2 className="text-4xl font-bold mt-4 mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-foreground/70 max-w-2xl mx-auto text-lg">
+            Find answers to common questions about our services and processes. 
+            Can't find what you're looking for? <span className="text-primary hover:underline cursor-pointer">Contact us</span>
           </p>
         </div>
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full space-y-4">
+          <Accordion type="single" collapsible className="w-full space-y-6">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-background/50 rounded-lg px-6"
+                className="bg-secondary/30 backdrop-blur-sm rounded-lg px-6 border border-primary/10 hover:border-primary/20 transition-all duration-300"
               >
-                <AccordionTrigger className="text-left hover:text-primary">
+                <AccordionTrigger className="text-left hover:text-primary transition-colors py-6 text-lg font-medium">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-foreground/70">
+                <AccordionContent className="text-foreground/70 pb-6 leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+        
+        <div className="text-center mt-12">
+          <p className="text-foreground/60 text-sm">
+            Still have questions? We're here to help!
+          </p>
+          <button className="mt-4 px-6 py-2 bg-primary/10 text-primary hover:bg-primary/20 rounded-full transition-colors duration-300 text-sm font-medium">
+            Contact Support
+          </button>
         </div>
       </div>
     </section>
