@@ -10,3 +10,18 @@
     font-family: 'Inter', sans-serif;
   }
 }
+
+@layer utilities {
+  .animate-float {
+    animation: float 10s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(20px, -20px);
+  }
+}

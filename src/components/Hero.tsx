@@ -2,27 +2,36 @@ import { ArrowRight } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background via-background/95 to-secondary/5">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background via-background/95 to-secondary/5 overflow-hidden">
+      {/* Floating Bubbles */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="bubble-1 absolute w-[300px] h-[300px] rounded-full bg-primary/20 blur-3xl"></div>
+        <div className="bubble-2 absolute w-[250px] h-[250px] rounded-full bg-primary/10 blur-3xl"></div>
+        <div className="bubble-3 absolute w-[200px] h-[200px] rounded-full bg-primary/15 blur-3xl"></div>
+      </div>
+      
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <div className="text-center space-y-8">
           <div className="space-y-4">
             <h2 className="inline-block rounded-full px-4 py-1.5 text-sm font-semibold text-primary bg-primary/10 backdrop-blur-sm">
-              Digital Innovation Agency
+              Over 1,500 Satisfied Clients
             </h2>
             
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              <span className="block text-foreground">We Create Digital</span>
-              <span className="block bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent animate-gradient-x">
-                Experiences That Matter
-              </span>
-            </h1>
-            
-            <p className="mx-auto max-w-2xl text-lg md:text-xl text-foreground/70 leading-relaxed">
-              Transforming ideas into exceptional digital solutions. We combine creativity 
-              with technical expertise to help businesses thrive in the digital age.
-            </p>
+            <div className="space-y-4 max-w-4xl mx-auto">
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
+                <span className="block text-foreground">Done For You</span>
+                <span className="block bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent animate-gradient-x">
+                  Digital Solutions
+                </span>
+              </h1>
+              
+              <p className="mx-auto max-w-2xl text-lg md:text-xl text-foreground/70 leading-relaxed">
+                We're a full-service digital agency that takes the headache out of development 
+                by building secure, scalable, and conversion-focused apps.
+              </p>
+            </div>
           </div>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
@@ -30,32 +39,46 @@ export const Hero = () => {
               href="#contact"
               className="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-200 font-semibold shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5"
             >
-              Start Your Project
+              Book A Call
               <ArrowRight className="ml-2 w-5 h-5" />
-            </a>
-            <a
-              href="#services"
-              className="inline-flex items-center justify-center px-8 py-4 bg-secondary hover:bg-secondary/90 text-white rounded-lg transition-colors font-semibold border border-primary/10 hover:border-primary/20"
-            >
-              Explore Services
             </a>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-8 border-t border-primary/10">
-            {[
-              { number: "10+", label: "Years Experience" },
-              { number: "200+", label: "Projects Completed" },
-              { number: "50+", label: "Team Members" },
-              { number: "95%", label: "Client Satisfaction" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl font-bold text-primary">{stat.number}</div>
-                <div className="text-sm text-foreground/70 mt-1">{stat.label}</div>
-              </div>
-            ))}
+          <div className="mt-16 pt-16">
+            <div className="flex flex-wrap justify-center gap-8 items-center opacity-70">
+              {[1, 2, 3, 4, 5, 6].map((index) => (
+                <div key={index} className="h-8 w-32 bg-foreground/10 rounded-md animate-pulse"></div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .bubble-1 {
+          top: 10%;
+          left: 15%;
+          animation: float 8s ease-in-out infinite;
+        }
+        .bubble-2 {
+          top: 60%;
+          right: 15%;
+          animation: float 12s ease-in-out infinite;
+        }
+        .bubble-3 {
+          top: 30%;
+          right: 25%;
+          animation: float 10s ease-in-out infinite;
+        }
+        @keyframes float {
+          0%, 100% {
+            transform: translate(0, 0);
+          }
+          50% {
+            transform: translate(20px, -20px);
+          }
+        }
+      `}</style>
     </section>
   );
 };
