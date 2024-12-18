@@ -1,9 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "./ui/button";
+import { useToast } from "./ui/use-toast";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut();
+      toast({
+        title: "Signed out successfully",
+        duration: 2000,
+      });
+      navigate("/login");
+    } catch (error) {
+      console.error("Error signing out:", error);
+      toast({
+        title: "Error signing out",
+        variant: "destructive",
+        duration: 2000,
+      });
+    }
+  };
 
   const navItems = [
     { name: "Services", href: "/services" },
@@ -33,8 +69,8 @@ export const Navigation = () => {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-8">
+            <div className="flex items-center space-x-8">
               {navItems.map((item) => (
                 item.href.startsWith('/') ? (
                   <Link
@@ -56,6 +92,21 @@ export const Navigation = () => {
                 )
               ))}
             </div>
+            {user ? (
+              <Button
+                variant="outline"
+                onClick={handleLogout}
+              >
+                Sign out
+              </Button>
+            ) : (
+              <Button
+                variant="default"
+                onClick={() => navigate("/login")}
+              >
+                Sign in
+              </Button>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -95,6 +146,23 @@ export const Navigation = () => {
                 </a>
               )
             ))}
+            {user ? (
+              <Button
+                variant="outline"
+                onClick={handleLogout}
+                className="w-full mt-4"
+              >
+                Sign out
+              </Button>
+            ) : (
+              <Button
+                variant="default"
+                onClick={() => navigate("/login")}
+                className="w-full mt-4"
+              >
+                Sign in
+              </Button>
+            )}
           </div>
         </div>
       )}
