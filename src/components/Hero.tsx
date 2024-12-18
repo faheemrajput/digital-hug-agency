@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Star, Users, Award, CheckCircle } from "lucide-react";
 
 export const Hero = () => {
   return (
@@ -45,16 +45,48 @@ export const Hero = () => {
           </div>
           
           <div className="mt-16 pt-16">
-            <div className="flex flex-wrap justify-center gap-8 items-center opacity-70">
-              {[1, 2, 3, 4, 5, 6].map((index) => (
-                <div key={index} className="h-8 w-32 bg-foreground/10 rounded-md animate-pulse"></div>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
+              <div className="flex flex-col items-center space-y-2 p-6 rounded-xl bg-secondary/50 backdrop-blur-sm border border-primary/10">
+                <Star className="w-8 h-8 text-primary" />
+                <h3 className="text-2xl font-bold">4.9/5</h3>
+                <p className="text-sm text-foreground/70">Average Rating</p>
+              </div>
+              
+              <div className="flex flex-col items-center space-y-2 p-6 rounded-xl bg-secondary/50 backdrop-blur-sm border border-primary/10">
+                <Users className="w-8 h-8 text-primary" />
+                <h3 className="text-2xl font-bold">1,500+</h3>
+                <p className="text-sm text-foreground/70">Happy Clients</p>
+              </div>
+              
+              <div className="flex flex-col items-center space-y-2 p-6 rounded-xl bg-secondary/50 backdrop-blur-sm border border-primary/10">
+                <Award className="w-8 h-8 text-primary" />
+                <h3 className="text-2xl font-bold">50+</h3>
+                <p className="text-sm text-foreground/70">Industry Awards</p>
+              </div>
+              
+              <div className="flex flex-col items-center space-y-2 p-6 rounded-xl bg-secondary/50 backdrop-blur-sm border border-primary/10">
+                <CheckCircle className="w-8 h-8 text-primary" />
+                <h3 className="text-2xl font-bold">99%</h3>
+                <p className="text-sm text-foreground/70">Success Rate</p>
+              </div>
+            </div>
+            
+            <div className="mt-12 pt-12 border-t border-primary/10">
+              <p className="text-sm text-foreground/50 mb-8">Trusted by leading companies worldwide</p>
+              <div className="flex flex-wrap justify-center gap-8 items-center">
+                {[1, 2, 3, 4, 5, 6].map((index) => (
+                  <div 
+                    key={index} 
+                    className="h-8 w-32 bg-foreground/5 rounded-md animate-pulse"
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .bubble-1 {
           top: 10%;
           left: 15%;
