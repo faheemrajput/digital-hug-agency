@@ -22,22 +22,24 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#0F0F0F",
+        background: "#0A0A0B",
         foreground: "#FFFFFF",
         primary: {
-          DEFAULT: "#FF5733",
+          DEFAULT: "#9B87F5",
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#1A1A1A",
+          DEFAULT: "#7E69AB",
           foreground: "#FFFFFF",
         },
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Space Grotesk", "sans-serif"],
+        display: ["Clash Display", "sans-serif"],
       },
       animation: {
         "gradient-x": "gradient-x 15s ease infinite",
+        "float": "float 6s ease-in-out infinite",
       },
       keyframes: {
         "gradient-x": {
@@ -48,6 +50,14 @@ export default {
           "50%": {
             "background-size": "200% 200%",
             "background-position": "right center",
+          },
+        },
+        "float": {
+          "0%, 100%": {
+            transform: "translateY(0)",
+          },
+          "50%": {
+            transform: "translateY(-20px)",
           },
         },
       },
