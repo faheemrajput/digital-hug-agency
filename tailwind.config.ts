@@ -38,6 +38,8 @@ export default {
       },
       animation: {
         "gradient-x": "gradient-x 15s ease infinite",
+        "shadow-pulse": "shadow-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "float-shadow": "float-shadow 6s ease-in-out infinite",
       },
       keyframes: {
         "gradient-x": {
@@ -48,6 +50,24 @@ export default {
           "50%": {
             "background-size": "200% 200%",
             "background-position": "right center",
+          },
+        },
+        "shadow-pulse": {
+          "0%, 100%": {
+            "box-shadow": "0 0 15px rgba(255, 87, 51, 0.2)",
+          },
+          "50%": {
+            "box-shadow": "0 0 30px rgba(255, 87, 51, 0.4)",
+          },
+        },
+        "float-shadow": {
+          "0%, 100%": {
+            transform: "translateY(0)",
+            "box-shadow": "0 10px 30px rgba(255, 87, 51, 0.2)",
+          },
+          "50%": {
+            transform: "translateY(-10px)",
+            "box-shadow": "0 20px 40px rgba(255, 87, 51, 0.3)",
           },
         },
       },
