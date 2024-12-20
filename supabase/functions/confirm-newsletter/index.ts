@@ -1,49 +1,52 @@
-import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-
-const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const handler = async (req: Request): Promise<Response> => {
+serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response("ok", { headers: corsHeaders });
   }
 
   try {
     const { token } = await req.json();
-    
-    const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
-    
-    const { error } = await supabase
+
+    if (!token) {
+      throw new Error("Invalid confirmation token.");
+    }
+
+    const supabaseClient = createClient(
+      Deno.env.get("SUPABASE_URL") ?? "",
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
+    );
+
+    const { data, error } = await supabaseClient
       .from("newsletter_subscribers")
       .update({ confirmed: true })
-      .eq("id", token);
+      .eq("id", token)
+      .select()
+      .single();
 
     if (error) throw error;
+    if (!data) throw new Error("Subscriber not found.");
 
     return new Response(
-      JSON.stringify({ message: "Subscription confirmed successfully!" }),
+      JSON.stringify({ message: "Email confirmed successfully!" }),
       {
-        status: 200,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
+        status: 200,
       }
     );
   } catch (error) {
-    console.error("Newsletter confirmation error:", error);
     return new Response(
-      JSON.stringify({ error: "Failed to confirm subscription" }),
+      JSON.stringify({ error: error.message }),
       {
-        status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
+        status: 400,
       }
     );
   }
-};
-
-serve(handler);
+});

@@ -1,93 +1,107 @@
-import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-
-const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+import { Resend } from "https://esm.sh/resend@1.0.0";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const handler = async (req: Request): Promise<Response> => {
+serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response("ok", { headers: corsHeaders });
   }
 
   try {
     const { email } = await req.json();
     
-    // Create Supabase client
-    const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
-    
-    // Insert subscriber
-    const { data: subscriber, error: insertError } = await supabase
+    // Validate email
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      throw new Error("Please provide a valid email address.");
+    }
+
+    // Initialize Supabase client
+    const supabaseClient = createClient(
+      Deno.env.get("SUPABASE_URL") ?? "",
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
+    );
+
+    // Check if email already exists
+    const { data: existingSubscriber } = await supabaseClient
+      .from("newsletter_subscribers")
+      .select()
+      .eq("email", email)
+      .single();
+
+    if (existingSubscriber) {
+      if (existingSubscriber.confirmed) {
+        throw new Error("This email is already subscribed to our newsletter.");
+      } else {
+        // Resend confirmation email
+        const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+        const confirmationUrl = `${req.headers.get("origin")}/confirm-newsletter?token=${existingSubscriber.id}`;
+
+        await resend.emails.send({
+          from: "WireLab <newsletter@wirelab.com>",
+          to: email,
+          subject: "Confirm your newsletter subscription",
+          html: `
+            <h2>Welcome to WireLab Newsletter!</h2>
+            <p>Please click the link below to confirm your subscription:</p>
+            <a href="${confirmationUrl}">Confirm Subscription</a>
+            <p>If you didn't request this, you can safely ignore this email.</p>
+          `,
+        });
+
+        return new Response(
+          JSON.stringify({ message: "Confirmation email resent." }),
+          {
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+            status: 200,
+          }
+        );
+      }
+    }
+
+    // Create new subscriber
+    const { data: newSubscriber, error: insertError } = await supabaseClient
       .from("newsletter_subscribers")
       .insert([{ email }])
       .select()
       .single();
 
-    if (insertError) {
-      if (insertError.code === "23505") { // unique_violation
-        return new Response(
-          JSON.stringify({ error: "You're already subscribed!" }),
-          {
-            status: 400,
-            headers: { ...corsHeaders, "Content-Type": "application/json" },
-          }
-        );
-      }
-      throw insertError;
-    }
+    if (insertError) throw insertError;
 
-    // Generate confirmation token (subscriber id in this case)
-    const confirmationUrl = `${req.headers.get("origin")}/confirm-newsletter?token=${subscriber.id}`;
+    // Send confirmation email
+    const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+    const confirmationUrl = `${req.headers.get("origin")}/confirm-newsletter?token=${newSubscriber.id}`;
 
-    // Send confirmation email using Resend
-    const emailResponse = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-      },
-      body: JSON.stringify({
-        from: "WireLab Newsletter <newsletter@wirelab.co>",
-        to: [email],
-        subject: "Confirm your newsletter subscription",
-        html: `
-          <h2>Welcome to WireLab Newsletter!</h2>
-          <p>Thank you for subscribing to our newsletter. Please click the button below to confirm your subscription:</p>
-          <a href="${confirmationUrl}" style="display: inline-block; background-color: #FF5733; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin: 16px 0;">
-            Confirm Subscription
-          </a>
-          <p>If you didn't request this subscription, you can safely ignore this email.</p>
-        `,
-      }),
+    await resend.emails.send({
+      from: "WireLab <newsletter@wirelab.com>",
+      to: email,
+      subject: "Confirm your newsletter subscription",
+      html: `
+        <h2>Welcome to WireLab Newsletter!</h2>
+        <p>Please click the link below to confirm your subscription:</p>
+        <a href="${confirmationUrl}">Confirm Subscription</a>
+        <p>If you didn't request this, you can safely ignore this email.</p>
+      `,
     });
 
-    if (!emailResponse.ok) {
-      throw new Error("Failed to send confirmation email");
-    }
-
     return new Response(
-      JSON.stringify({ message: "Please check your email to confirm your subscription" }),
+      JSON.stringify({ message: "Please check your email to confirm your subscription." }),
       {
-        status: 200,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
+        status: 200,
       }
     );
   } catch (error) {
-    console.error("Newsletter signup error:", error);
     return new Response(
-      JSON.stringify({ error: "Failed to process subscription" }),
+      JSON.stringify({ error: error.message }),
       {
-        status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
+        status: 400,
       }
     );
   }
-};
-
-serve(handler);
+});

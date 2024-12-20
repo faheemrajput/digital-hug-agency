@@ -1,75 +1,97 @@
 import { useEffect, useState } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { CheckCircle, XCircle } from "lucide-react";
 
 const ConfirmNewsletter = () => {
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
   const [status, setStatus] = useState<"loading" | "success" | "error">("loading");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const confirmSubscription = async () => {
-      const token = searchParams.get("token");
-      
-      if (!token) {
-        setStatus("error");
-        return;
-      }
-
       try {
+        const token = searchParams.get("token");
+        if (!token) throw new Error("Invalid confirmation link.");
+
         const response = await supabase.functions.invoke("confirm-newsletter", {
           body: { token },
         });
 
         if (response.error) throw response.error;
-        
+
         setStatus("success");
-        setTimeout(() => {
-          navigate("/");
-        }, 5000);
-      } catch (error) {
-        console.error("Confirmation error:", error);
+        setMessage("Your subscription has been confirmed! Thank you for subscribing to our newsletter.");
+      } catch (error: any) {
         setStatus("error");
+        setMessage(error.message || "Something went wrong. Please try again.");
       }
     };
 
     confirmSubscription();
-  }, [searchParams, navigate]);
+  }, [searchParams]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <div className="max-w-md w-full space-y-8 text-center">
         {status === "loading" && (
-          <div className="animate-pulse space-y-4">
-            <div className="h-12 w-12 rounded-full bg-primary/20 mx-auto" />
-            <div className="h-4 bg-primary/20 rounded w-3/4 mx-auto" />
+          <div className="animate-pulse">
+            <h2 className="text-2xl font-bold">Confirming your subscription...</h2>
           </div>
         )}
         
         {status === "success" && (
           <div className="space-y-4">
-            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h1 className="text-2xl font-bold text-foreground">Subscription Confirmed!</h1>
-            <p className="text-foreground/70">
-              Thank you for confirming your subscription. You'll be redirected to the homepage in a few seconds.
-            </p>
+            <div className="w-16 h-16 bg-green-500 rounded-full mx-auto flex items-center justify-center">
+              <svg
+                className="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <h2 className="text-2xl font-bold text-foreground">Subscription Confirmed!</h2>
+            <p className="text-foreground/70">{message}</p>
+            <a
+              href="/"
+              className="inline-block mt-4 text-primary hover:text-primary/80"
+            >
+              Return to Homepage
+            </a>
           </div>
         )}
         
         {status === "error" && (
           <div className="space-y-4">
-            <XCircle className="h-12 w-12 text-red-500 mx-auto" />
-            <h1 className="text-2xl font-bold text-foreground">Confirmation Failed</h1>
-            <p className="text-foreground/70">
-              We couldn't confirm your subscription. Please try subscribing again.
-            </p>
-            <button
-              onClick={() => navigate("/")}
-              className="text-primary hover:text-primary/80"
+            <div className="w-16 h-16 bg-red-500 rounded-full mx-auto flex items-center justify-center">
+              <svg
+                className="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </div>
+            <h2 className="text-2xl font-bold text-foreground">Oops!</h2>
+            <p className="text-foreground/70">{message}</p>
+            <a
+              href="/"
+              className="inline-block mt-4 text-primary hover:text-primary/80"
             >
               Return to Homepage
-            </button>
+            </a>
           </div>
         )}
       </div>
