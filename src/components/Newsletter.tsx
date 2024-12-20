@@ -5,7 +5,12 @@ import { Button } from "./ui/button";
 import { useToast } from "./ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
-export const Newsletter = () => {
+interface NewsletterProps {
+  isPopup?: boolean;
+  onSuccess?: () => void;
+}
+
+export const Newsletter = ({ isPopup, onSuccess }: NewsletterProps) => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -26,6 +31,7 @@ export const Newsletter = () => {
         description: "Please check your email to confirm your subscription.",
       });
       setEmail("");
+      onSuccess?.();
     } catch (error: any) {
       toast({
         title: "Error",
@@ -36,6 +42,43 @@ export const Newsletter = () => {
       setIsLoading(false);
     }
   };
+
+  if (isPopup) {
+    return (
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <p className="text-foreground/70">
+          Get the latest updates, news, and special offers delivered directly to your inbox.
+        </p>
+        <div className="space-y-4">
+          <Input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="h-12 bg-background/50 border-primary/10 focus:border-primary/30"
+          />
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-semibold"
+          >
+            {isLoading ? (
+              "Subscribing..."
+            ) : (
+              <>
+                Subscribe Now
+                <Mail className="ml-2 h-5 w-5" />
+              </>
+            )}
+          </Button>
+        </div>
+        <p className="text-sm text-foreground/50">
+          By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
+        </p>
+      </form>
+    );
+  }
 
   return (
     <section className="relative py-24 overflow-hidden">

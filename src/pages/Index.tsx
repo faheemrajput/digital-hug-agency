@@ -9,6 +9,7 @@ import { Portfolio } from "@/components/Portfolio";
 import { Pricing } from "@/components/Pricing";
 import { About } from "@/components/About";
 import { Newsletter } from "@/components/Newsletter";
+import { NewsletterPopup } from "@/components/NewsletterPopup";
 import { Shield } from "lucide-react";
 
 const Index = () => {
@@ -33,6 +34,7 @@ const Index = () => {
       <Newsletter />
       <FAQ />
       <Contact />
+      <NewsletterPopup />
       
       <footer className="py-16 border-t border-primary/20 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
