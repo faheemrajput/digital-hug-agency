@@ -8,6 +8,7 @@ import { FAQ } from "@/components/FAQ";
 import { Portfolio } from "@/components/Portfolio";
 import { Pricing } from "@/components/Pricing";
 import { About } from "@/components/About";
+import { Newsletter } from "@/components/Newsletter";
 import { Shield } from "lucide-react";
 
 const Index = () => {
@@ -29,6 +30,7 @@ const Index = () => {
       <Stats />
       <Pricing />
       <Testimonials />
+      <Newsletter />
       <FAQ />
       <Contact />
       

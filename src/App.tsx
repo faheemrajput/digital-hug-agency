@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Login from "./pages/Login";
 import AuthCallback from "./pages/AuthCallback";
+import ConfirmNewsletter from "./pages/ConfirmNewsletter";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/login" element={<Login />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
+          <Route path="/confirm-newsletter" element={<ConfirmNewsletter />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
