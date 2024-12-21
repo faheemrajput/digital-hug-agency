@@ -6,6 +6,10 @@ import { ContactCardsAdmin } from "@/components/admin/ContactCardsAdmin";
 import { FooterContentAdmin } from "@/components/admin/FooterContentAdmin";
 import { supabase } from "@/integrations/supabase/client";
 
+interface Claims {
+  role?: string;
+}
+
 const Admin = () => {
   const navigate = useNavigate();
 
@@ -17,7 +21,7 @@ const Admin = () => {
         return;
       }
 
-      const { data, error } = await supabase.rpc('get_claims');
+      const { data, error } = await supabase.rpc('get_claims') as { data: Claims | null, error: Error | null };
       if (error || !data?.role || data.role !== 'admin') {
         console.error('Not authorized as admin:', error);
         navigate("/");

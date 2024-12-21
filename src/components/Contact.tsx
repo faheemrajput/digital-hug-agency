@@ -59,7 +59,7 @@ export const Contact = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {contacts?.map((contact) => {
-            const IconComponent = Icons[contact.icon_name as keyof typeof Icons];
+            const LucideIcon = Icons[contact.icon_name as keyof typeof Icons];
             return (
               <Card
                 key={contact.id}
@@ -68,9 +68,7 @@ export const Contact = () => {
                 <CardContent className="pt-6">
                   <div className="flex items-center mb-4">
                     <div className="p-3 rounded-full bg-primary/10">
-                      {IconComponent && (
-                        <IconComponent className="w-5 h-5 text-primary" />
-                      )}
+                      {LucideIcon && <LucideIcon className="w-5 h-5 text-primary" />}
                     </div>
                     <h3 className="font-semibold ml-3">{contact.title}</h3>
                   </div>

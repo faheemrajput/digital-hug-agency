@@ -34,14 +34,14 @@ export const Services = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services?.map((service) => {
-            const IconComponent = Icons[service.icon_name as keyof typeof Icons];
+            const LucideIcon = Icons[service.icon_name as keyof typeof Icons];
             return (
               <div
                 key={service.id}
                 className="p-6 rounded-lg bg-secondary border border-primary/20 hover:border-primary/40 transition-all"
               >
                 <div className="text-primary mb-4">
-                  {IconComponent && <IconComponent className="w-8 h-8" />}
+                  {LucideIcon && <LucideIcon className="w-8 h-8" />}
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
                 <p className="text-foreground/70">{service.description}</p>
