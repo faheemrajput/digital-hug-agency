@@ -9,6 +9,60 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      contact_cards: {
+        Row: {
+          content: string
+          created_at: string
+          icon_name: string
+          id: string
+          sub_content: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          icon_name: string
+          id?: string
+          sub_content?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          icon_name?: string
+          id?: string
+          sub_content?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      footer_content: {
+        Row: {
+          content: Json
+          created_at: string
+          id: string
+          section_name: string
+          updated_at: string
+        }
+        Insert: {
+          content: Json
+          created_at?: string
+          id?: string
+          section_name: string
+          updated_at?: string
+        }
+        Update: {
+          content?: Json
+          created_at?: string
+          id?: string
+          section_name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       newsletter_subscribers: {
         Row: {
           confirmed: boolean | null
@@ -48,6 +102,33 @@ export type Database = {
           id?: string
           updated_at?: string | null
           username?: string | null
+        }
+        Relationships: []
+      }
+      service_cards: {
+        Row: {
+          created_at: string
+          description: string
+          icon_name: string
+          id: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          icon_name: string
+          id?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          icon_name?: string
+          id?: string
+          title?: string
+          updated_at?: string
         }
         Relationships: []
       }
