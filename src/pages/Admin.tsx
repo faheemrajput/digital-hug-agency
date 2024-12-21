@@ -21,7 +21,7 @@ const Admin = () => {
         return;
       }
 
-      const { data, error } = await supabase.rpc('get_claims') as { data: Claims | null, error: Error | null };
+      const { data, error } = await supabase.rpc('get_claims', {}) as { data: Claims | null, error: Error | null };
       if (error || !data?.role || data.role !== 'admin') {
         console.error('Not authorized as admin:', error);
         navigate("/");

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import * as Icons from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 export const Services = () => {
   const { data: services, isLoading } = useQuery({
@@ -34,7 +35,7 @@ export const Services = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services?.map((service) => {
-            const LucideIcon = Icons[service.icon_name as keyof typeof Icons];
+            const LucideIcon = Icons[service.icon_name as keyof typeof Icons] as LucideIcon;
             return (
               <div
                 key={service.id}
