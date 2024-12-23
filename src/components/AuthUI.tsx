@@ -19,7 +19,7 @@ export const AuthUI = () => {
           },
         }}
         providers={["google"]}
-        redirectTo={`${window.location.origin}/auth/callback`}
+        redirectTo="https://wirelab.co/auth/callback"
       />
     </div>
   );
