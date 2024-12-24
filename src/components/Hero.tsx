@@ -1,116 +1,77 @@
-import { ArrowRight, Star, Users, Award, CheckCircle } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background via-background/95 to-secondary/5 overflow-hidden">
-      {/* Floating Bubbles */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="bubble-1 absolute w-[300px] h-[300px] rounded-full bg-primary/20 blur-3xl"></div>
-        <div className="bubble-2 absolute w-[250px] h-[250px] rounded-full bg-primary/10 blur-3xl"></div>
-        <div className="bubble-3 absolute w-[200px] h-[200px] rounded-full bg-primary/15 blur-3xl"></div>
-      </div>
-      
+    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-background via-secondary to-background/90 overflow-hidden">
+      {/* Background Effects */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-        <div className="text-center space-y-8">
-          <div className="space-y-4">
-            <h2 className="inline-block rounded-full px-4 py-1.5 text-sm font-semibold text-primary bg-primary/10 backdrop-blur-sm">
-              Over 1,500 Satisfied Clients
-            </h2>
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-8">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm border border-primary/20 rounded-full px-4 py-1.5">
+              <span className="text-xs font-semibold bg-primary text-white px-2 py-0.5 rounded-full">
+                NEW
+              </span>
+              <span className="text-sm font-medium text-primary">
+                No. 1 Agency of 2025
+              </span>
+            </div>
             
-            <div className="space-y-4 max-w-4xl mx-auto">
+            {/* Main Content */}
+            <div className="space-y-6">
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-                <span className="block text-foreground">Done For You</span>
-                <span className="block bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent animate-gradient-x">
-                  Digital Solutions
-                </span>
+                <span className="block text-foreground">Premium Agency</span>
+                <span className="block text-foreground">for Creatives.</span>
               </h1>
               
-              <p className="mx-auto max-w-2xl text-lg md:text-xl text-foreground/70 leading-relaxed">
-                We're a full-service digital agency that takes the headache out of development 
-                by building secure, scalable, and conversion-focused apps.
+              <p className="text-lg text-foreground/70 max-w-xl">
+                We specialize in crafting unique digital presence 
+                that help businesses grow and stand out in their industries.
               </p>
             </div>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-200 font-semibold shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5"
-            >
-              Book A Call
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </a>
-          </div>
-          
-          <div className="mt-16 pt-16">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
-              <div className="flex flex-col items-center space-y-2 p-6 rounded-xl bg-secondary/50 backdrop-blur-sm border border-primary/10">
-                <Star className="w-8 h-8 text-primary" />
-                <h3 className="text-2xl font-bold">4.9/5</h3>
-                <p className="text-sm text-foreground/70">Average Rating</p>
-              </div>
-              
-              <div className="flex flex-col items-center space-y-2 p-6 rounded-xl bg-secondary/50 backdrop-blur-sm border border-primary/10">
-                <Users className="w-8 h-8 text-primary" />
-                <h3 className="text-2xl font-bold">1,500+</h3>
-                <p className="text-sm text-foreground/70">Happy Clients</p>
-              </div>
-              
-              <div className="flex flex-col items-center space-y-2 p-6 rounded-xl bg-secondary/50 backdrop-blur-sm border border-primary/10">
-                <Award className="w-8 h-8 text-primary" />
-                <h3 className="text-2xl font-bold">50+</h3>
-                <p className="text-sm text-foreground/70">Industry Awards</p>
-              </div>
-              
-              <div className="flex flex-col items-center space-y-2 p-6 rounded-xl bg-secondary/50 backdrop-blur-sm border border-primary/10">
-                <CheckCircle className="w-8 h-8 text-primary" />
-                <h3 className="text-2xl font-bold">99%</h3>
-                <p className="text-sm text-foreground/70">Success Rate</p>
-              </div>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center px-6 py-3 bg-foreground text-background rounded-full font-medium hover:bg-foreground/90 transition-colors"
+              >
+                Connect With Us
+              </a>
+              <button
+                className="inline-flex items-center justify-center px-6 py-3 bg-transparent border border-foreground/20 text-foreground rounded-full font-medium hover:bg-foreground/10 transition-colors"
+              >
+                What is Landin?
+              </button>
             </div>
             
-            <div className="mt-12 pt-12 border-t border-primary/10">
-              <p className="text-sm text-foreground/50 mb-8">Trusted by leading companies worldwide</p>
-              <div className="flex flex-wrap justify-center gap-8 items-center">
-                {[1, 2, 3, 4, 5, 6].map((index) => (
+            {/* Trusted By */}
+            <div className="pt-12 mt-12 border-t border-foreground/10">
+              <p className="text-sm text-foreground/50 mb-6">Trusted by leading companies</p>
+              <div className="flex flex-wrap gap-8 items-center opacity-50">
+                {[1, 2, 3].map((index) => (
                   <div 
                     key={index} 
-                    className="h-8 w-32 bg-foreground/5 rounded-md animate-pulse"
+                    className="h-8 w-24 bg-foreground/10 rounded-md"
                   />
                 ))}
               </div>
             </div>
           </div>
+          
+          {/* Video Preview */}
+          <div className="relative aspect-video rounded-lg overflow-hidden bg-secondary/50 backdrop-blur-sm border border-foreground/10">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <button className="w-16 h-16 flex items-center justify-center rounded-full bg-primary text-white hover:bg-primary/90 transition-colors">
+                <Play className="w-6 h-6" />
+              </button>
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent" />
+          </div>
         </div>
       </div>
-
-      <style>{`
-        .bubble-1 {
-          top: 10%;
-          left: 15%;
-          animation: float 8s ease-in-out infinite;
-        }
-        .bubble-2 {
-          top: 60%;
-          right: 15%;
-          animation: float 12s ease-in-out infinite;
-        }
-        .bubble-3 {
-          top: 30%;
-          right: 25%;
-          animation: float 10s ease-in-out infinite;
-        }
-        @keyframes float {
-          0%, 100% {
-            transform: translate(0, 0);
-          }
-          50% {
-            transform: translate(20px, -20px);
-          }
-        }
-      `}</style>
     </section>
   );
 };
