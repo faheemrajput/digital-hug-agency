@@ -41,6 +41,7 @@ export default {
         "float": "float 10s ease-in-out infinite",
         "fade-in": "fade-in 0.5s ease-out forwards",
         "pulse": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "grid": "grid 15s linear infinite",
       },
       keyframes: {
         "gradient-x": {
@@ -78,6 +79,10 @@ export default {
           "50%": {
             opacity: "0.5",
           },
+        },
+        "grid": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(calc(var(--cell-size) * -1))" },
         },
       },
     },
