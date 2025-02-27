@@ -1,3 +1,4 @@
+
 import { Navigation } from "@/components/Navigation";
 import { Services } from "@/components/Services";
 import { Hero } from "@/components/Hero";
@@ -10,6 +11,7 @@ import { Pricing } from "@/components/Pricing";
 import { About } from "@/components/About";
 import { Newsletter } from "@/components/Newsletter";
 import { NewsletterPopup } from "@/components/NewsletterPopup";
+import { ScrollProgress } from "@/components/ScrollProgress";
 import { Shield } from "lucide-react";
 
 const Index = () => {
@@ -23,6 +25,7 @@ const Index = () => {
           </p>
         </div>
       </div>
+      <ScrollProgress />
       <Navigation />
       <Hero />
       <Services />
