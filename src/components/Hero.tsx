@@ -1,7 +1,5 @@
-
 import { ArrowRight, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
-import { Globe } from "@/registry/magicui/globe";
 
 export const Hero = () => {
   return (
@@ -67,17 +65,6 @@ export const Hero = () => {
 
       {/* Main content container */}
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-        {/* Globe component */}
-        <div className="absolute inset-0 flex justify-center items-center pointer-events-none overflow-hidden">
-          <div className="relative transform translate-y-[-5%]">
-            <span className="whitespace-pre-wrap bg-gradient-to-b from-primary/10 to-primary/5 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent">
-              Global
-            </span>
-            <Globe className="top-16" />
-            <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
-          </div>
-        </div>
-
         {/* Trusted badge with enhanced animation */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
